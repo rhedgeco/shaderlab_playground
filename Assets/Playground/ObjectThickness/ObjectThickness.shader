@@ -47,7 +47,7 @@ Shader "ShaderPlayground/ObjectThickness"
             fixed4 frag (v2f i) : SV_Target
             {
                 float d = i.depth;
-                return -d;
+                return fixed4(0,0,0,-d);
             }
             ENDCG
         }
@@ -58,6 +58,7 @@ Shader "ShaderPlayground/ObjectThickness"
         {
             Cull Back
             ZWrite On
+            
             
             CGPROGRAM
             #pragma vertex vert
@@ -91,7 +92,7 @@ Shader "ShaderPlayground/ObjectThickness"
     
             fixed4 frag (v2f i) : SV_Target
             {
-                float ld = -tex2Dproj(_BackDepth, i.grabCoord).x;
+                float ld = -tex2Dproj(_BackDepth, i.grabCoord).w;
                 float d = i.depth;
                 float t = ld - d;
                 if(t < 0) return 0;
