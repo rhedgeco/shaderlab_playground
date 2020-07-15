@@ -1,2 +1,2 @@
-# shaderlab_playground
+# Shaderlab Playground
 My personal playground for creating shaderlab shaders
